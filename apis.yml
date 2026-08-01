@@ -1,7 +1,12 @@
 aid: shoelace
 name: Shoelace
-description: Shoelace is a company surfaced as a portfolio company of 500-global and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: Shoelace is an omni-channel growth marketing agency for direct-to-consumer
+  (DTC) brands, trusted by 300+ brands. The team plans, creates, and optimizes paid
+  advertising, email, and creative work across both acquisition and retention channels
+  to drive real, measurable revenue growth. Shoelace operates as a managed growth
+  partner delivering marketing services rather than a public developer API; this API
+  Evangelist profile tracks the company as a 500 Global portfolio lead and captures
+  its public web presence and domain-security posture.
 url: https://raw.githubusercontent.com/api-evangelist/shoelace/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,11 +14,29 @@ x-backed-by:
 - 500-global
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://cdn.prod.website-files.com/6170cbcb66a17ca81a5e6cc3/633750169d692632a866f9c6_SL-Favicon.png
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
+- Marketing
+- Growth Marketing
+- DTC
+- Advertising
+- Email Marketing
+- Agency
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -21,5 +44,22 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/shoelace-domain-security.yml
 - type: Website
   url: https://shoelace.com
+- type: Blog
+  url: https://www.shoelace.com/blog
+- type: Pricing
+  url: https://www.shoelace.com/pricing
+- type: Support
+  url: https://www.shoelace.com/help
+- type: TermsOfService
+  url: https://www.shoelace.com/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.shoelace.com/privacy-policy
+x-enrichment:
+  date: '2026-07-21'
+  status: minimal
+  artifacts_added: 1
+  pass: local-v1
