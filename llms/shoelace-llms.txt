@@ -1,0 +1,21 @@
+# Shoelace Growth Marketing Agency
+
+> Shoelace Growth Marketing Agency manages 4 data types including glossary terms.
+
+## Pages
+
+- [Home](https://shoelace.com/): Main page
+- [About](https://shoelace.com/about): About page
+- [Blog](https://shoelace.com/journal): Blog page
+- [Case Studies](https://shoelace.com/work): Case Studies page
+- [Contact](https://shoelace.com/contact): Contact page
+- [Email](https://shoelace.com/services/email): Email page
+- [Glossary Index](https://shoelace.com/library/glossary): Glossary Index page
+- [Google](https://shoelace.com/services/google): Google page
+- [Library Hub](https://shoelace.com/library): Library Hub page
+- [Meta](https://shoelace.com/services/meta): Meta page
+- [Playbook Agent](https://shoelace.com/playbook-agent): Playbook Agent page
+- [Playbooks Index](https://shoelace.com/library/playbooks): Playbooks Index page
+- [Services](https://shoelace.com/services): Services page
+- [Tik Tok](https://shoelace.com/services/tiktok): Tik Tok page
+- [You Tube](https://shoelace.com/services/youtube): You Tube page

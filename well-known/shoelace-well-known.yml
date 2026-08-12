@@ -1,0 +1,70 @@
+generated: '2026-08-12'
+method: probed
+source: live probes of https://shoelace.com/.well-known/*
+host: https://shoelace.com
+documents:
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/openid-configuration
+  status: 200
+  content_type: application/json
+  file: shoelace-openid-configuration.json
+  owner: base44
+  note: >-
+    Real OIDC discovery document, but it is NOT Shoelace's. It declares
+    issuer https://app.base44.com, authorization/token/userinfo endpoints on
+    app.base44.com, service_documentation https://docs.base44.com/mcp, and
+    platform scopes (apps:read, apps:write, sandbox:write, offline, app:mcp).
+    shoelace.com is built and hosted on Base44, and every Base44-hosted domain
+    serves this identical document. It describes the Base44 platform's
+    authorization server, not any Shoelace API.
+- path: /.well-known/oauth-authorization-server
+  status: 200
+  content_type: application/json
+  file: shoelace-oauth-authorization-server.json
+  owner: base44
+  note: Byte-identical to the openid-configuration document above; same Base44 ownership finding.
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
+- path: /.well-known/agent-card.json
+  status: 404
+- path: /.well-known/agent.json
+  status: 404
+- path: /.well-known/mcp.json
+  status: 404
+other_documents:
+- path: /llms.txt
+  status: 200
+  content_type: text/plain
+  file: ../llms/shoelace-llms.txt
+- path: /robots.txt
+  status: 200
+  content_type: text/plain
+  note: 'User-agent: * / Allow: / — sitemap declared at https://shoelace.com/sitemap.xml'
+- path: /sitemap.xml
+  status: 200
+  content_type: application/xml
+  note: Six URLs — /, /about, /services, /work, /journal, /contact.
+- path: /manifest.json
+  status: 200
+  content_type: application/json
+x-pointer-decision:
+  well_known_type_emitted: false
+  reason: >-
+    No apis.yml `WellKnown` pointer is emitted. The only two paths that returned
+    200 with a real document are the Base44 platform's shared OAuth/OIDC discovery
+    documents, served automatically from every Base44-hosted domain. Per the
+    ownership rule, a document that names a different company's issuer and endpoints
+    is not evidence that THIS provider publishes a discovery surface, so recording
+    it as a Shoelace-served well-known catalog would be false credit.
+x-evidence:
+  fetched: '2026-08-12'
+  probed_hosts:
+  - shoelace.com
+  soft_200_warning: >-
+    shoelace.com is a client-rendered single-page app. Every unknown HTML path
+    returns HTTP 200 with the same ~22KB app shell (title echoes the URL slug),
+    so an HTML 200 on this host is NOT evidence a page exists. Only the
+    /.well-known/* JSON responses above give honest 404s.

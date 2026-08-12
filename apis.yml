@@ -1,12 +1,14 @@
 aid: shoelace
 name: Shoelace
 description: Shoelace is an omni-channel growth marketing agency for direct-to-consumer
-  (DTC) brands, trusted by 300+ brands. The team plans, creates, and optimizes paid
-  advertising, email, and creative work across both acquisition and retention channels
-  to drive real, measurable revenue growth. Shoelace operates as a managed growth
-  partner delivering marketing services rather than a public developer API; this API
-  Evangelist profile tracks the company as a 500 Global portfolio lead and captures
-  its public web presence and domain-security posture.
+  (DTC) and e-commerce brands, founded in 2015 and trusted by 300+ brands. The team
+  plans, creates, and optimizes paid acquisition across Meta, Google, TikTok and YouTube
+  alongside email and SMS retention, performance creative, UGC, and in-house photo and
+  video production. Shoelace operates as a managed growth partner delivering marketing
+  services — it sells campaign management, not software, and publishes no developer
+  API, SDK, webhook surface, or developer portal. This API Evangelist profile tracks
+  the company as a 500 Global portfolio lead and captures its public web presence,
+  its published llms.txt, and its domain-security posture.
 url: https://raw.githubusercontent.com/api-evangelist/shoelace/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -25,16 +27,18 @@ accessModel:
   source: []
   generated: '2026-07-22'
   method: derived
-image: https://cdn.prod.website-files.com/6170cbcb66a17ca81a5e6cc3/633750169d692632a866f9c6_SL-Favicon.png
+image: https://media.base44.com/images/public/6a554b6210f2878725464b3e/f71197d73_logo.png
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-21'
+modified: '2026-08-12'
 tags:
 - Company
 - Marketing
 - Growth Marketing
 - DTC
+- E-Commerce
 - Advertising
+- Paid Media
 - Email Marketing
 - Agency
 apis: []
@@ -46,20 +50,91 @@ maintainers:
 common:
 - type: DomainSecurity
   url: security/shoelace-domain-security.yml
+- type: LLMsTxt
+  url: llms/shoelace-llms.txt
 - type: Website
   url: https://shoelace.com
+- type: About
+  url: https://shoelace.com/about
 - type: Blog
-  url: https://www.shoelace.com/blog
-- type: Pricing
-  url: https://www.shoelace.com/pricing
-- type: Support
-  url: https://www.shoelace.com/help
-- type: TermsOfService
-  url: https://www.shoelace.com/terms-of-service
-- type: PrivacyPolicy
-  url: https://www.shoelace.com/privacy-policy
+  url: https://shoelace.com/journal
+- type: CaseStudies
+  url: https://shoelace.com/work
+- type: Contact
+  url: https://shoelace.com/contact
+- type: Resources
+  url: https://shoelace.com/library
+- type: Glossary
+  url: https://shoelace.com/library/glossary
+x-contract-discovery:
+  checked: '2026-08-12'
+  result: no published contract found
+  note: >-
+    STEP 0b/0c contract discovery ran against shoelace.com and every candidate
+    subdomain. Two findings are recorded here so a later pass does not re-litigate
+    them and does not wrongly save them.
+  rejected:
+  - url: https://shoelace.com/api/openapi.json
+    status: 200
+    parses_as: OpenAPI 3.1.0
+    verdict: rejected-not-this-company
+    why: >-
+      Real, parseable OpenAPI served from Shoelace's own domain — and it is NOT
+      Shoelace's. info.title is "Base44 App Management API", servers[] is
+      https://app.base44.com, and the two operations are
+      GET /api/apps/{app_id}/coding/export-to-zip and POST /api/apps/{app_id}/deploy
+      with a "Personal API key" apiKey scheme. shoelace.com is built and hosted on
+      Base44, which serves this platform-management spec from every app domain. It
+      describes Base44's product, not Shoelace's, so nothing is derived from it.
+  - url: https://shoelace.com/.well-known/openid-configuration
+    status: 200
+    verdict: rejected-not-this-company
+    why: >-
+      Declares issuer https://app.base44.com with Base44 platform scopes; the same
+      shared document is served from every Base44-hosted domain. See
+      well-known/shoelace-well-known.yml.
+  misses:
+  - {url: 'https://api.shoelace.com', status: 000, note: DNS does not resolve}
+  - {url: 'https://docs.shoelace.com', status: 000, note: DNS does not resolve}
+  - {url: 'https://developer.shoelace.com', status: 000, note: DNS does not resolve}
+  - {url: 'https://status.shoelace.com', status: 000, note: DNS does not resolve}
+  - {url: 'https://trust.shoelace.com', status: 000, note: DNS does not resolve}
+  - {url: 'https://go.shoelace.com/', status: 404, note: retired HubSpot landing-page host}
+  - {url: 'https://shoelace.com/.well-known/agent-card.json', status: 404}
+  - {url: 'https://shoelace.com/.well-known/agent.json', status: 404}
+  soft_200_hosts:
+  - host: shoelace.com
+    note: >-
+      Client-rendered single-page app on Base44. Every unknown HTML path returns
+      HTTP 200 with the same ~22KB shell and a <title> that echoes the URL slug, so
+      an HTML 200 is not evidence a page exists. /pricing, /help, /terms-of-service,
+      /privacy-policy, /security and /changelog were all confirmed soft-200s this
+      pass and their previously-recorded pointers were removed. The auto-generated
+      BreadcrumbList JSON-LD also echoes the slug back into the page, which is how
+      the shared security-programs probe produced a false "responsible disclosure"
+      hit on https://shoelace.com/security/responsible-disclosure — that artifact and
+      its pointer were removed rather than published.
 x-enrichment:
-  date: '2026-07-21'
+  date: '2026-08-12'
   status: minimal
-  artifacts_added: 1
+  artifacts_added: 4
   pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Shoelace sells managed paid-media and retention campaign work, not software —
+    its own llms.txt enumerates fifteen marketing pages and no developer surface,
+    api./docs./developer.shoelace.com do not resolve, and the only OpenAPI reachable
+    on the domain (https://shoelace.com/api/openapi.json) is the Base44 App
+    Management API belonging to the platform the marketing site is built on.
+  evidence:
+  - url: https://shoelace.com/llms.txt
+    status: 200
+  - url: https://shoelace.com/api/openapi.json
+    status: 200
+  - url: https://shoelace.com/.well-known/agent-card.json
+    status: 404
+  - url: https://developer.shoelace.com
+    status: 0
+  checked: '2026-08-12'
