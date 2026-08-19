@@ -28,7 +28,7 @@ accessModel:
   generated: '2026-07-22'
   method: derived
 image: https://media.base44.com/images/public/6a554b6210f2878725464b3e/f71197d73_logo.png
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-08-12'
 tags:
